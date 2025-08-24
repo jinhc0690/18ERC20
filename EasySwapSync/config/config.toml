@@ -1,0 +1,54 @@
+[project_cfg]
+name = "OrderBookDex"
+
+[monitor]
+pprof_enable = true
+pprof_port = 6060
+
+[log]
+compress = false
+leep_days = 7
+level = "info"
+mode = "console"
+path = "logs/relayer"
+service_name = "easyswap-sync"
+
+[db]
+database = "easyswap"
+password = "123456"
+port = 3306
+max_open_conns = 1500
+host = "127.0.0.1"
+log_level = "info"
+max_conn_max_lifetime = 300
+user = "root"
+max_idle_conns = 10
+
+[kv]
+[[kv.redis]]
+pass = ""
+host = "127.0.0.1:6379"
+type = "node"
+
+[ankr_cfg]
+api_key="5b20ca5b9ddf4b4c851351696ad9d564"
+https_url="https://sepolia.infura.io/v3/"
+#https_url="https://rpc.ankr.com/eth_sepolia"
+#https_url="https://rpc.ankr.com/optimism"
+
+#https_url="https://base-sepolia.infura.io/v3/"
+
+[chain_cfg]
+name="sepolia"
+id=11155111
+
+#name="basepolia"
+#id=84532
+
+[contract_cfg]
+eth_address = "0x0000000000000000000000000000000000000000"
+weth_address = "0x4200000000000000000000000000000000000006"
+#dex_address = "0x6cC205491792Ba1B4Bd1BBfA6aF3268645036ce8" # undeploy
+dex_address = "0x91967508183aefF7A6ff8F01Cf3fD3b7c35CF880"
+
+#dex_address = "0x99b5e4D23F5b5b928500934f55f51fd43f3BfB3E"
