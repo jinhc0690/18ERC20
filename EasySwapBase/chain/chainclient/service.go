@@ -24,7 +24,7 @@ type ChainClient interface {
 
 func New(chainID int, nodeUrl string) (ChainClient, error) {
 	switch chainID {
-	case chain.EthChainID, chain.OptimismChainID, chain.SepoliaChainID:
+	case chain.EthChainID, chain.OptimismChainID, chain.SepoliaChainID, chain.BasepoliaChainID:
 		return evmclient.New(nodeUrl)
 	default:
 		return nil, errors.New("unsupported chain id")

@@ -62,7 +62,7 @@ func New(ctx context.Context, cfg *config.Config) (*Service, error) {
 	}
 
 	switch cfg.ChainCfg.ID {
-	case chain.EthChainID, chain.OptimismChainID, chain.SepoliaChainID:
+	case chain.EthChainID, chain.OptimismChainID, chain.SepoliaChainID, chain.BasepoliaChainID:
 		orderbookSyncer = orderbookindexer.New(ctx, cfg, db, kvStore, chainClient, cfg.ChainCfg.ID, cfg.ChainCfg.Name, orderManager)
 	}
 	if err != nil {

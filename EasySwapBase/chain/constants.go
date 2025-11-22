@@ -9,15 +9,17 @@ import (
 )
 
 const (
-	Eth      = "eth"
-	Optimism = "optimism"
-	Sepolia  = "sepolia"
+	Eth       = "eth"
+	Optimism  = "optimism"
+	Sepolia   = "sepolia"
+	Basepolia = "basepolia"
 )
 
 const (
-	EthChainID      = 1
-	OptimismChainID = 10
-	SepoliaChainID  = 11155111
+	EthChainID       = 1
+	OptimismChainID  = 10
+	SepoliaChainID   = 11155111
+	BasepoliaChainID = 84532
 )
 
 func UniformAddress(chainName string, address string) (string, error) {

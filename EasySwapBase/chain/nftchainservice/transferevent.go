@@ -19,9 +19,10 @@ var EVMTransferTopic = common.HexToHash("0xddf252ad1be2c89b69c2b068fc378daa952ba
 var TokenIdExp = new(big.Int).Exp(big.NewInt(2), big.NewInt(128), nil)
 
 var BlockTimeGap = map[string]int{
-	chain.Eth:      12,
-	chain.Optimism: 2,
-	chain.Sepolia:  12,
+	chain.Eth:       12,
+	chain.Optimism:  2,
+	chain.Sepolia:   12,
+	chain.Basepolia: 12,
 }
 
 type TransferLog struct {
@@ -46,7 +47,7 @@ func (s *Service) GetNFTTransferEvent(fromBlock, toBlock uint64) ([]*TransferLog
 	var startBlockTime uint64
 	var err error
 	switch s.ChainName {
-	case chain.Eth, chain.Optimism, chain.Sepolia:
+	case chain.Eth, chain.Optimism, chain.Sepolia, chain.Basepolia:
 		blockTimestamp, err := s.NodeClient.BlockTimeByNumber(context.Background(), big.NewInt(int64(fromBlock)))
 		if err != nil {
 			return nil, errors.Wrap(err, "failed on get block time")
@@ -56,7 +57,7 @@ func (s *Service) GetNFTTransferEvent(fromBlock, toBlock uint64) ([]*TransferLog
 
 	var transferTopic string
 	switch s.ChainName {
-	case chain.Eth, chain.Optimism, chain.Sepolia:
+	case chain.Eth, chain.Optimism, chain.Sepolia, chain.Basepolia:
 		transferTopic = EVMTransferTopic.String()
 	default:
 		return nil, errors.Wrap(err, "unsupported chain")
